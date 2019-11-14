@@ -66,6 +66,7 @@ button:hover {
 function submitProduct() {
         $.ajax({
                 type: "POST",
+                contentType: "application/x-www-form-urlencoded", 
                 url: 'http://18.218.183.18:8080/submitProduct/',
                 data: {
                   'productId': document.getElementById('productId').value,
