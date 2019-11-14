@@ -86,7 +86,7 @@ function getProduct() {
              url: "http://18.218.183.18:8080/logEvents/",
              type: "get",
              data: { 
-            'productId':document.getElementById('Id').value;
+            'productId':document.getElementById('Id').value
               },
             success: function(response) {
               document.getElementById('getProductId').innerHTML = response.productId;
