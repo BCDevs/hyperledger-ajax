@@ -66,7 +66,7 @@ button:hover {
 function submitProduct() {
         $.ajax({
                 type: "POST",
-                url: '/submitProduct/',
+                url: 'http://18.218.183.18:8080/submitProduct/',
                 data: {
                   'productId': document.getElementById('productId').value,
                    'ownerName': document.getElementById('owner').value,
@@ -83,7 +83,7 @@ function submitProduct() {
 
 function getProduct() {
           $.ajax({
-             url: "ajax.aspx",
+             url: "http://18.218.183.18:8080/logEvents/",
              type: "get",
              data: { 
             'productId':document.getElementById('Id').value;
