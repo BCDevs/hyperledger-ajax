@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta name="viewport" content="height=device-height, initial-scale=0.68">
+<head>
+<title>HyperledgerFabric-ajax</title>
+<style>
+input[type=submit]{background-color: #008CBA;} 
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+input[type=text], input[type=password],select {
+  width:300px;
+  padding: 8px 10px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+div {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  height: 100%;
+}
+button {
+  width: auto;
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 8px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+button:active {
+    background-color: rgb(0, 81, 125);
+  }
+
+button:hover {
+    opacity: 0.7;
+} 
+</style>
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+</head>
+<body>
+<div style="text-align:center;">
+<h2>Submit Product</h2>
+        Product Id: <input id="productId" type="text" /> <br />
+        Owner: <input id="owner" type="text" /> <br />
+        Product Name: <input id="productName" type="text" /> <br />
+        <button onclick=submitProduct()>Submit<button/>
+</br>
+<h2>Product Details</h2>
+ Product Id: <input id="Id" type="text" placeholder="Enter Product Id.." /> <br />
+ <button onclick=getProduct()>Get<button/>
+</br>
+<p id="getProductId">??</p>
+<p id="getProductName">??</p>
+<div>
+<script>
+function submitProduct() {
+        $.ajax({
+                type: "POST",
+                url: '/submitProduct/',
+                data: {
+                  'productId': document.getElementById('productId').value,
+                   'ownerName': document.getElementById('owner').value,
+                    'productName':document.getElementById('productName').value
+                      },
+             success: function(response) {
+              alert('Success')
+                 },
+            
+              error: function(xhr) {
+              alert('error')
+           }
+        });
+
+function getProduct() {
+          $.ajax({
+             url: "ajax.aspx",
+             type: "get",
+             data: { 
+            'productId':document.getElementById('Id').value;
+              },
+            success: function(response) {
+              document.getElementById('getProductId').innerHTML = response.productId;
+              document.getElementById('getProductName').innerHTML = response.productName;
+         
+                 },
+            
+           error: function(xhr) {
+           alert('error')
+           }
+      });
+</script>
+</body>
+</html>
