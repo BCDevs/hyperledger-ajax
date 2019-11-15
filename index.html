@@ -67,7 +67,7 @@ function submitProduct() {
         $.ajax({
                 type: "post",
                 contentType: "application/x-www-form-urlencoded", 
-                url: 'http://18.218.183.18:8080/submitProduct/',
+                url: 'http://3.133.133.53:8080/submitProduct/',
                 data: {
                   'productId': document.getElementById('productId').value,
                    'ownerName': document.getElementById('owner').value,
@@ -78,25 +78,29 @@ function submitProduct() {
                  },
             
               error: function(xhr) {
-              alert('error')
+              alert('Request Not Succeded..!')
            }
         });
    }
 function getProduct() {
           $.ajax({
-             url: "http://18.218.183.18:8080/logEvents/",
+             url: "http://3.133.133.53:8080/logEvents/",
              type: "get",
              data: { 
             'productId':document.getElementById('Id').value
               },
             success: function(response) {
-              document.getElementById('getProductId').innerHTML = response.productId;
-              document.getElementById('getProductName').innerHTML = response.productName;
-         
+            	if (typeof response.ProductId=="undefined"){
+
+            		alert(response);
+            	}else{
+              document.getElementById('getProductId').innerHTML = response.ProductId;
+              document.getElementById('getProductName').innerHTML = response.ProductName;
+                }
                  },
             
            error: function(xhr) {
-           alert('error')
+           alert('Request Not Succeded..!')
            }
       });
     }
